@@ -22,13 +22,14 @@ Proof.
   - exact (var <= n /\ 1 <= var).
   - exact ((well_formed_from t1 n) /\ (well_formed_from t2 (nb_fv t1))). 
   - exact (well_formed_from t' (S n)).
-Qed.
+Defined.
 
 Definition well_formed : LC -> Prop.
 Proof.
   intro t.
   exact (well_formed_from t 1).
-Qed.
-  
+Defined.
+
+
 Definition WLC : Set := {t : LC | well_formed t}.
  

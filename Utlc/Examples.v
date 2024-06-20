@@ -6,6 +6,13 @@ Require Import UTLC.Alpha_eq.
 
 Definition Id : LC :=  Abs (Var 1).
 
+Lemma well_formed_Id : well_formed Id.
+Proof.
+  unfold well_formed ; unfold well_formed_from.
+  simpl.
+  auto.
+Qed.
+
 Definition K : LC := Abs (Abs (Var 2)).
 
 Definition K' : LC := Abs (Abs (Var 1)).
