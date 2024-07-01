@@ -10,9 +10,9 @@ Proof.
   - remember (count_fv_from t1 fv_list) as left_f.
     remember (count_fv_from t2 (snd left_f)) as right_f.
     exact (fst left_f + fst right_f ,  snd right_f). 
-  - remember (map S fv_list) as lifted_fv_list.
+  - remember (map succ fv_list) as lifted_fv_list.
     exact ( fst (count_fv_from t' lifted_fv_list) , fv_list).
-Qed.
+Defined.
 
 Definition nb_fv (t : LC) : nat := fst (count_fv_from t nil).
 
@@ -21,7 +21,7 @@ Proof.
   destruct t as [var | [t1 t2] | t'].
   - exact (var <= n /\ 1 <= var).
   - exact ((well_formed_from t1 n) /\ (well_formed_from t2 (nb_fv t1))). 
-  - exact (well_formed_from t' (S n)).
+  - exact (well_formed_from t' (succ n)).
 Defined.
 
 Definition well_formed : LC -> Prop.
@@ -30,6 +30,5 @@ Proof.
   exact (well_formed_from t 1).
 Defined.
 
-
 Definition WLC : Set := {t : LC | well_formed t}.
- 
+
